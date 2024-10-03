@@ -104,6 +104,7 @@ represent:
 ```{r}
 #| label: load-data
 surveys <- read_csv(file = here::here("data", "surveys.csv"))
+## There are 30463 rows in this data frame and 15 columns. 
 ```
 
 **2. What are the dimensions (# of rows and columns) of these data?**
