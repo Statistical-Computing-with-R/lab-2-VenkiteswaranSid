@@ -5,6 +5,10 @@ format: html
 editor: source
 embed-resources: true
 code-tools: true
+execute: 
+  echo: true
+  output: true
+  error: false
 ---
 
 # Part 1: GitHub Workflow
@@ -62,6 +66,7 @@ In the code chunk below, load in the packages necessary for your analysis. You s
 
 ```{r}
 #| label: setup
+#| echo: true
 library(tidyverse)
 library(readr)
 library(readxl)
@@ -103,12 +108,15 @@ represent:
 
 ```{r}
 #| label: load-data
+#| echo: true
 surveys <- read_csv(file = here::here("data", "surveys.csv"), show_col_types = FALSE)
 ```
 
 **2. What are the dimensions (# of rows and columns) of these data?**
 
 ```{r}
+#| label: finding the dimensions
+#| echo: true
 dim(surveys)
 ```
 There are 30463 rows in this data frame and 15 columns.
@@ -116,6 +124,8 @@ There are 30463 rows in this data frame and 15 columns.
 **3. What are the data types of the variables in this dataset?**
 
 ```{r}
+#| label: finding the data types
+#| echo: true
 ## https://stackoverflow.com/questions/21125222/determine-the-data-types-of-a-data-frames-columns
 str(surveys)
 ```
@@ -134,6 +144,7 @@ for different types of plots:
 ```{r}
 #| eval: false
 #| label: ggplot-template-code
+#| echo: true
 
 ggplot(data = <DATA>,
        mapping = aes(<VARIABLE MAPPINGS>)) +
@@ -149,6 +160,7 @@ the $x$-axis) and `hindfoot_length` (on the $y$-axis).**
 
 ```{r}
 #| label: scatterplot
+#| echo: true
 
 ggplot(data = surveys,
        mapping = aes(
@@ -186,7 +198,15 @@ It takes a larger cognitive load to read text that is rotated. It is common prac
 
 ```{r}
 #| label: boxplot
+#| echo: true
 
+ggplot(data = surveys,
+       mapping = aes(
+         x = species,
+         y = weight
+       )) + 
+  geom_jitter() +
+  geom_boxplot()
 
 ```
 
