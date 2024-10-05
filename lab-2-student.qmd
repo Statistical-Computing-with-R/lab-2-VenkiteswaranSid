@@ -218,7 +218,8 @@ ggplot(data = surveys,
        y = NULL, 
        subtitle = "Weight (g)") +
   theme(axis.text.x = element_text(angle = 45),
-        axis.text.y = element_text(angle = 45))
+        axis.text.y = element_text(angle = 45)) + 
+  coord_flip()
 
 ```
 
