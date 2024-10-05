@@ -156,7 +156,7 @@ ggplot(data = surveys,
          y = hindfoot_length)) +
   geom_point(alpha = 0.4) + 
   facet_wrap(~ species) + 
-  labs(title = "Weight of a Rodent Compared to its Hindfoot Length by Species", x = "Weight (g)", y = "Hindfoot Length (mm)")
+  labs(title = "Weight of a Rodent Compared to its Hindfoot Length by Species", x = "Weight (g)", y = NULL, subtitle = "Hindfoot Length (mm)")
 ```
 
 We can see there are **a lot** of points plotted on top of each other. Let's try and modify this plot to extract more information from it.
