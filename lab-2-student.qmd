@@ -169,7 +169,10 @@ ggplot(data = surveys,
          y = hindfoot_length)) +
   geom_point(alpha = 0.4) + 
   facet_wrap(~ species) + 
-  labs(title = "Weight of a Rodent Compared to its Hindfoot Length by Species", x = "Weight (g)", y = NULL, subtitle = "Hindfoot Length (mm)")
+  labs(title = "Weight of a Rodent Compared to its Hindfoot Length by Species", 
+       x = "Weight (g)", 
+       y = NULL, 
+       subtitle = "Hindfoot Length (mm)")
 ```
 
 We can see there are **a lot** of points plotted on top of each other. Let's try and modify this plot to extract more information from it.
@@ -200,14 +203,22 @@ It takes a larger cognitive load to read text that is rotated. It is common prac
 ```{r}
 #| label: boxplot
 #| echo: true
-
+## http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels
 ggplot(data = surveys,
        mapping = aes(
          x = species,
          y = weight
        )) + 
-  geom_jitter(color = "steelblue", alpha = 0.3) +
-  geom_boxplot(fill = "red3", outliers = FALSE)
+  geom_jitter(color = "steelblue", 
+              alpha = 0.3) +
+  geom_boxplot(fill = "red3", 
+               outliers = FALSE) + 
+  labs(title = "Boxplots of Species of Rodent by Their Weight", 
+       x = "Rodent Species", 
+       y = NULL, 
+       subtitle = "Weight (g)") +
+  theme(axis.text.x = element_text(angle = 45),
+        axis.text.y = element_text(angle = 45))
 
 ```
 
