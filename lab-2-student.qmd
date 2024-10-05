@@ -70,6 +70,7 @@ In the code chunk below, load in the packages necessary for your analysis. You s
 library(tidyverse)
 library(readr)
 library(readxl)
+library(wesanderson)
 ```
 
 # Data Context
@@ -205,8 +206,8 @@ ggplot(data = surveys,
          x = species,
          y = weight
        )) + 
-  geom_jitter() +
-  geom_boxplot()
+  geom_jitter(color = "steelblue", alpha = 0.3) +
+  geom_boxplot(fill = "red3", outliers = FALSE)
 
 ```
 
