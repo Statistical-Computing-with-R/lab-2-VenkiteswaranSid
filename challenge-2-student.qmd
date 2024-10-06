@@ -37,6 +37,36 @@ make use of the `ggridges` package to create side-by-side density (ridge) plots.
 
 > **For this challenge you are to change your boxplots to ridge plots. You will need to install the `ggridges` package and explore the `geom_density_ridges()` function.**
 
+
+```{r}
+#| label: setup
+#| echo: true
+## Load in the packages
+library(tidyverse)
+library(ggridges)
+```
+
+```{r}
+#| label: density-plot
+#| echo: true
+## Create the density plot
+ggplot(data = surveys, 
+       mapping = aes(
+         x = weight, 
+         y = species, 
+         group = species)) + 
+  geom_jitter(color = "steelblue", 
+              alpha = 0.3) + 
+  geom_density_ridges(fill = "red") + 
+  labs(title = "Density Plots of Species of Rodent by Their Weight", 
+       x = "Weight (g)", 
+       y = NULL, 
+       subtitle = "Rodent Species") +
+  theme(axis.text.x = element_text(angle = 45),
+        axis.text.y = element_text(angle = 45))
+```
+
+
 # Spicy: Exploring Color Themes
 
 The built-in `ggplot()` color scheme may not include the colors you were looking
