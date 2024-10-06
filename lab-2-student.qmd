@@ -218,9 +218,7 @@ ggplot(data = surveys,
        y = NULL, 
        subtitle = "Weight (g)") +
   theme(axis.text.x = element_text(angle = 45),
-        axis.text.y = element_text(angle = 45)) + 
-  coord_flip()
-
+        axis.text.y = element_text(angle = 45))
 ```
 
 **10. Create side-by-side boxplots to visualize the distribution of weight within each species.**
@@ -266,7 +264,23 @@ Some people (and journals) prefer for boxplots to be stacked with a specific ori
 
 ```{r}
 #| label: rotated-boxplot
-
+#| echo: true
+ggplot(data = surveys,
+       mapping = aes(
+         x = species,
+         y = weight
+       )) + 
+  geom_jitter(color = "steelblue", 
+              alpha = 0.3) +
+  geom_boxplot(fill = "red3", 
+               outliers = FALSE) + 
+  labs(title = "Boxplots of Species of Rodent by Their Weight", 
+       x = "Rodent Species", 
+       y = NULL, 
+       subtitle = "Weight (g)") +
+  theme(axis.text.x = element_text(angle = 45),
+        axis.text.y = element_text(angle = 45)) + 
+  coord_flip()
 ```
 
 Notice how vertically stacked boxplots make the species labels more readable
@@ -298,13 +312,16 @@ might want to look up the help documentation for `aov()`.
 
 ```{r}
 #| label: anova
-
-species_mod <- aov()
+#| echo: true
+## https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/aov
+species_mod <- aov(weight ~ species, data = surveys)
 
 summary(species_mod)
 ```
 
 **18. Based on the results of the ANOVA F-test, draw a conclusion in context of the hypotheses. Make sure to cite appropriate output from above.**
+
+Based on our p-value from the ANOVA F-test, which is 2e-16, which is a very small p-value, we have strong evidence against the null hypothesis that the population mean weight is the same across all 14 rodent species, and thus we can reject the null. 
 
 
 # Lab 2 Submission
