@@ -5,6 +5,9 @@ format: html
 editor: source
 embed-resources: true
 code-tools: true
+code-fold: true
+toc: true
+toc-depth: 2
 execute: 
   echo: true
   output: true
@@ -110,6 +113,7 @@ represent:
 ```{r}
 #| label: load-data
 #| echo: true
+## Use read_csv to read in the data
 surveys <- read_csv(file = here::here("data", "surveys.csv"), show_col_types = FALSE)
 ```
 
@@ -118,6 +122,7 @@ surveys <- read_csv(file = here::here("data", "surveys.csv"), show_col_types = F
 ```{r}
 #| label: finding the dimensions
 #| echo: true
+## Use the dim function to find the dimensions of surveys
 dim(surveys)
 ```
 There are 30463 rows in this data frame and 15 columns.
@@ -128,11 +133,12 @@ There are 30463 rows in this data frame and 15 columns.
 #| label: finding the data types
 #| echo: true
 ## https://stackoverflow.com/questions/21125222/determine-the-data-types-of-a-data-frames-columns
+## Use the str function to obtain the types of variables
 str(surveys)
 ```
-record_id, month, day, year, plot_id, hindfoot_length, and weight are all numeric
-species_id, sex, day_of_week, plot_type, genus, species, and taxa are all characters
-date is a date type variable
+The numeric variables are: record_id, month, day, year, plot_id, hindfoot_length, and weight
+The character variables are: species_id, sex, day_of_week, plot_type, genus, species, and taxa
+The one variable that is of the type "date" is date 
 
 # Exploratory Data Analysis with **`ggplot2`**
 
@@ -162,7 +168,7 @@ the $x$-axis) and `hindfoot_length` (on the $y$-axis).**
 ```{r}
 #| label: scatterplot
 #| echo: true
-
+## Creating a scatterplot of surveys comparing weight by hindfoot length
 ggplot(data = surveys,
        mapping = aes(
          x = weight, 
@@ -204,6 +210,7 @@ It takes a larger cognitive load to read text that is rotated. It is common prac
 #| label: boxplot
 #| echo: true
 ## http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels
+## Creating boxplots of the weights of different species
 ggplot(data = surveys,
        mapping = aes(
          x = species,
@@ -265,6 +272,7 @@ Some people (and journals) prefer for boxplots to be stacked with a specific ori
 ```{r}
 #| label: rotated-boxplot
 #| echo: true
+## Making boxplots that compare the weights of different species, but with a horizontal orientation
 ggplot(data = surveys,
        mapping = aes(
          x = species,
@@ -275,9 +283,9 @@ ggplot(data = surveys,
   geom_boxplot(fill = "red3", 
                outliers = FALSE) + 
   labs(title = "Boxplots of Species of Rodent by Their Weight", 
-       x = "Rodent Species", 
-       y = NULL, 
-       subtitle = "Weight (g)") +
+       x = NULL, 
+       y = "Weight (g)", 
+       subtitle = "Rodent Species") +
   theme(axis.text.x = element_text(angle = 45),
         axis.text.y = element_text(angle = 45)) + 
   coord_flip()
@@ -314,6 +322,7 @@ might want to look up the help documentation for `aov()`.
 #| label: anova
 #| echo: true
 ## https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/aov
+## Using the aov function to test out our hypotheses
 species_mod <- aov(weight ~ species, data = surveys)
 
 summary(species_mod)
