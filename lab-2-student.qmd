@@ -352,7 +352,6 @@ In addition, your document should not have any warnings or messages output in yo
 ```{r}
 #| label: density-plot
 #| echo: true
-
 library(ggridges)
 ggplot(data = surveys, 
        mapping = aes(
