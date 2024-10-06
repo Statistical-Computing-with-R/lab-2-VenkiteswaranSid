@@ -8,6 +8,7 @@ code-tools: true
 code-fold: true
 toc: true
 toc-depth: 2
+theme: cyborg
 execute: 
   echo: true
   output: true
@@ -344,3 +345,29 @@ For Lab 2 you will submit **only** your HTML file. Your HTML file is required to
 **If any of the options are not included, your Lab 2 or Challenge 2 assignment will receive an "Incomplete" and you will be required to submit a revision.**
 
 In addition, your document should not have any warnings or messages output in your HTML document. **If your HTML contains warnings or messages, you will receive an "Incomplete" for document formatting and you will be required to submit a revision.**
+
+# Challenge 2
+
+## Medium
+```{r}
+#| label: density-plot
+#| echo: true
+
+library(ggridges)
+ggplot(data = surveys, 
+       mapping = aes(
+         x = weight, 
+         y = species, 
+         group = species)) + 
+  geom_jitter(color = "steelblue", 
+              alpha = 0.3) + 
+  geom_density_ridges(fill = "red") + 
+  labs(title = "Density Plots of Species of Rodent by Their Weight", 
+       x = "Weight (g)", 
+       y = NULL, 
+       subtitle = "Rodent Species") +
+  theme(axis.text.x = element_text(angle = 45),
+        axis.text.y = element_text(angle = 45))
+```
+```
+
