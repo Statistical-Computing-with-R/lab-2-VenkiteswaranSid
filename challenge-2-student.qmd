@@ -151,7 +151,6 @@ We can add annotation(s) to a `ggplot()` using the `annotate()` function:
 ```{r}
 #| echo: true
 #| label: example-annotation
-
 ggplot(data = surveys, 
        mapping = aes(y = species,
                      x = weight,
