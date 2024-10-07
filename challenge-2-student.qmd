@@ -1,6 +1,6 @@
 ---
 title: "Challenge 2: Spicing things up with ggplot2"
-author: "Add your name!"
+author: "Siddharth Venkiteswaran"
 format: html
 editor: source
 embed-resources: true
@@ -52,6 +52,13 @@ make use of the `ggridges` package to create side-by-side density (ridge) plots.
 ## Load in the packages
 library(tidyverse)
 library(ggridges)
+```
+
+```{r}
+#| label: load-data
+#| echo: true
+## Use read_csv to read in the data
+surveys <- read_csv(file = here::here("data", "surveys.csv"), show_col_types = FALSE)
 ```
 
 ```{r}
