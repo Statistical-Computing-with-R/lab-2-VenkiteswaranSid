@@ -58,7 +58,8 @@ library(ggridges)
 #| label: load-data
 #| echo: true
 ## Use read_csv to read in the data
-surveys <- read_csv(file = here::here("data", "surveys.csv"), show_col_types = FALSE)
+surveys <- read_csv(file = here::here("data", "surveys.csv"), 
+                    show_col_types = FALSE)
 ```
 
 ```{r}
