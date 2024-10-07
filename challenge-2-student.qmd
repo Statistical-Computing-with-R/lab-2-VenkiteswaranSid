@@ -5,6 +5,14 @@ format: html
 editor: source
 embed-resources: true
 code-tools: true
+code-fold: true
+toc: true
+toc-depth: 2
+theme: cyborg
+execute: 
+  echo: true
+  output: true
+  error: false
 ---
 
 For this week's Challenge, you will have three different options to explore.
