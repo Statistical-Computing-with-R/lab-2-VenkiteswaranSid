@@ -1,13 +1,16 @@
 ---
 title: "Lab 2: Exploring Rodents with `ggplot2`"
 author: "Siddharth Venkiteswaran"
-format: html
+format: 
+  html:  
+    embed-resources: true
+    code-tools: true
+    toc: true
+    toc-depth: 2
 editor: source
-embed-resources: true
-code-tools: true
+message: false
+warning: false
 code-fold: true
-toc: true
-toc-depth: 2
 theme: cyborg
 execute: 
   echo: true
